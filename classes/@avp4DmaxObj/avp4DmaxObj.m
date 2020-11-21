@@ -627,6 +627,9 @@ savePBGlomeruliLimits(objarray)
 loadPBGlomeruliLimits(objarray)
 value = getStoredDaqTimes(obj)
 [tuningAng,resultantLength] = tuningROI(obj,ROImask,convertToPubAngs)
+    
+         plotBarPolImg(obj,noMask,noiseFilter)
+
     end
     
 end

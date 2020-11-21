@@ -322,6 +322,8 @@ superPolAngResultantROI(objarray,usePSIweighting,usePSIthreshold)
          setPBlims(superobj)
 assignPolPixRGB(objarray)
 
+ varargout = superTuningCurve(objarray,useCellMask)
+
     end
     
 end
