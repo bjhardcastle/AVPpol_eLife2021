@@ -88,10 +88,18 @@ A quick way to explore selectivity and tuning values in each recording is throug
 
     maskLayers(x(1))    % open GUI with the first recording in the array
 
-@[osf](https://osf.io/x7asg)
+@[osf](https://mfr.osf.io/render?url=https://osf.io/x7asg/?direct%26mode=render%26action=download%26mode=render)
 
 Selectivity and tuning maps can be toggled on/off. Scatter plots can also be produced to examine polarotopy within the mask (applies threshold in 'selectivity' text box):
 @[osf](https://osf.io/vgzyu)
 
+
+#### **notes**
+
+Convert polarizer angles as-recorded to convetion used in publication: `wrapTo180(-theta-270)`
+
+---------
+
   [1]: https://github.com/bjhardcastle/SlidebookObj
   [2]: https://bitbucket.org/jastrother/neuron_image_analysis/src
+ 
