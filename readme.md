@@ -88,10 +88,10 @@ A quick way to explore selectivity and tuning values in each recording is throug
 
     maskLayers(x(1))    % open GUI with the first recording in the array
 
-@[osf](x7asg)
+@[osf](https://osf.io/x7asg)
 
 Selectivity and tuning maps can be toggled on/off. Scatter plots can also be produced to examine polarotopy within the mask (applies threshold in 'selectivity' text box):
-@[osf](vgzyu)
+@[osf](https://osf.io/vgzyu)
 
   [1]: https://github.com/bjhardcastle/SlidebookObj
   [2]: https://bitbucket.org/jastrother/neuron_image_analysis/src
