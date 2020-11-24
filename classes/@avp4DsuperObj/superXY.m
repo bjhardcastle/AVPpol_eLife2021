@@ -561,7 +561,7 @@ if ~Xoff
             
             for n = 1:length(lineHX2)
                 lineHX2(n).Color = meanFitLine;
-                lineHX2(n).LineWidth = 2;
+                lineHX2(n).LineWidth = 1;
             end
             
         end
@@ -573,7 +573,7 @@ if ~Xoff
         for n = 1:length(lineHX)
             lineHX(n).Color = 'k';
             lineHX(n).LineWidth = 1;
-            lineHX(n).LineStyle = ':';
+            %lineHX(n).LineStyle = ':';
         end
     end
     
@@ -765,7 +765,7 @@ if ~Yoff
             [lineHY2, phi_fitY] = plotPhi_VentDors(obj(inclIdx),mean(amaxY),posY,mean_phi_0Y,ax(2),convertAngles4Pub);
             for n = 1:length(lineHY2)
                 lineHY2(n).Color = meanFitLine;
-                lineHY2(n).LineWidth = 2;
+                lineHY2(n).LineWidth = 1;
             end
         end
     
@@ -776,7 +776,7 @@ if ~Yoff
         for n = 1:length(lineHY)
             lineHY(n).Color = 'k';
             lineHY(n).LineWidth = 1;
-            lineHY(n).LineStyle = ':';
+            %lineHY(n).LineStyle = ':';
         end
     end
     

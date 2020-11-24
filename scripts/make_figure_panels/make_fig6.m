@@ -76,7 +76,7 @@ printAVP
 %}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Tuning map in TuBu_a in anterior bulb 
+%% Tuning map in R4m in anterior bulb 
 loadR34D03_Bu
 printpath = fig6path;
 superUseMSP(x,1)
@@ -97,7 +97,7 @@ printAVP
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Normalized response curves
-make_panel_TuBu_a_R4m_ROI_tuning_curve
+% make_panel_TuBu_a_R4m_ROI_tuning_curve
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Tuning map in R2 in superior bulb (Gal4 #1 - individual layer)

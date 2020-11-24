@@ -53,6 +53,8 @@ fig6path = fullfile(plotpathAVP, 'fig6' );
 fig7path = fullfile(plotpathAVP, 'fig7' );
 fig8path = fullfile(plotpathAVP, 'fig8' );
 
+fig9path = fullfile(plotpathAVP, 'fig9' );
+
 fig1s1path = fullfile(plotpathAVP, 'fig1s1' );
 fig1s2path = fullfile(plotpathAVP, 'fig1s2' );
 fig2s3path = fullfile(plotpathAVP, 'fig2s3' );
