@@ -237,7 +237,7 @@ addExportFigToolbar(gcf)
 prefix = 'mean_relative';
 savename = 'PBgrid';
 suffix = 'dist_unsigned';
-printpath = fig8s6path;
+printpath = fig8s1path;
 printAVP
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -256,7 +256,7 @@ tightfig(gcf)
 prefix = 'relative';
 savename = 'PBgrid';
 suffix = 'dist_signed';
-printpath = fig8s6path;
+printpath = fig8s1path;
 printAVP
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

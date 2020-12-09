@@ -3,9 +3,10 @@ rootpathAVP = fullfile(fileparts(thisfilepath));
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 orig_path_mode = 0; % for testing updated objarrays before copying to minimal data storage
-
 original_data_path = 'Y:\ben\avp_pol\18_data\';
 raw_data_path = fullfile(fileparts(rootpathAVP), '18_data');
+
+publicationXYcorrStats = 0; % plots will appear the same either way, but setting to 1 will run more time-consuming stats (total run time to make all figs becomes hours rather than minutes)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % add all required subfolders to search path (temporary)
@@ -53,14 +54,13 @@ fig6path = fullfile(plotpathAVP, 'fig6' );
 fig7path = fullfile(plotpathAVP, 'fig7' );
 fig8path = fullfile(plotpathAVP, 'fig8' );
 
-fig9path = fullfile(plotpathAVP, 'fig9' );
-
 fig1s1path = fullfile(plotpathAVP, 'fig1s1' );
 fig1s2path = fullfile(plotpathAVP, 'fig1s2' );
-fig2s3path = fullfile(plotpathAVP, 'fig2s3' );
-fig4s4path = fullfile(plotpathAVP, 'fig4s4' );
-fig6s5path = fullfile(plotpathAVP, 'fig6s5' );
-fig8s6path = fullfile(plotpathAVP, 'fig8s6' );
+fig1s3path = fullfile(plotpathAVP, 'fig1s3' );
+fig2s1path = fullfile(plotpathAVP, 'fig2s1' );
+fig4s1path = fullfile(plotpathAVP, 'fig4s1' );
+fig6s1path = fullfile(plotpathAVP, 'fig6s1' );
+fig8s1path = fullfile(plotpathAVP, 'fig8s1' );
 
 fig_command_window_output = fullfile(plotpathAVP, 'commandWindow.log' );
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

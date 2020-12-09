@@ -2,8 +2,8 @@
 % Each cell can be run independently
 
 pathsAVP
-if exist(fullfile(fig4s4path),'dir')
-    try rmdir(fullfile(fig4s4path),'s'),end
+if exist(fullfile(fig4s1path),'dir')
+    try rmdir(fullfile(fig4s1path),'s'),end
 end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

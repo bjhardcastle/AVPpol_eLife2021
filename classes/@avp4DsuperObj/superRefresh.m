@@ -19,9 +19,9 @@ for oidx = 1:length(objarray)
         getPolMaps(objarray(oidx).Layers(lidx))
         objarray(oidx).Layers(lidx).polROI = [];
         objarray(oidx).Layers(lidx).UseFixedResp = 0;
-        % %getPolROIs(objarray(oidx).Layers(lidx))
-        % %savePolROIs(objarray(oidx).Layers(lidx))
-        % objarray(oidx).Layers(lidx).polROI = [];
+        getPolROIs(objarray(oidx).Layers(lidx))
+        savePolROIs(objarray(oidx).Layers(lidx))
+        objarray(oidx).Layers(lidx).polROI = [];
         
         objarray(oidx).Layers(lidx).ROI = [];
         loadROIs(objarray(oidx).Layers(lidx))

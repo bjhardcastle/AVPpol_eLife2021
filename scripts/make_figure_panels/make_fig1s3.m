@@ -2,17 +2,16 @@
 % Each cell can be run independently
 
 pathsAVP
-thisfigpath = fig9path;
+thisfigpath = fig1s3path;
 if exist(thisfigpath,'dir')
     try rmdir(thisfigpath,'s'),end
 end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% PSI vals (All cells)
-% printpath = fig8s6path;
+% printpath = fig8s1path;
 pathsAVP
-% fig9path = 'Y:\ben\avp_pol\20_ms1\standalone\plots\fig9';
-printpath = fig9path;
+printpath = fig1s3path;
 
 prefix = 'psi_';
 
@@ -58,8 +57,7 @@ printAVP
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Tuning curves for all cells 
 pathsAVP
-% fig9path = 'Y:\ben\avp_pol\20_ms1\standalone\plots\fig9';
-printpath = fig9path;
+printpath = fig1s3path;
 getAVPplotParams
 alpha = 0.3;
 for nidx = 1:size(objnames,1)

@@ -97,6 +97,20 @@ plotCombPolImgManual( x(selectPBTobjects_L(3)).MIP ,0,[1:8])  % no cols
 suffix = '_manualROIs_L3';
 printAVP
 %}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Example bar/pol polar map (left hand AOTU)
+
+loadR73C04_AOTU
+ 
+printpath = fig3path;
+
+prefix = 'barpolImg_';
+
+superUseMSP(x); 
+
+plotBarPolImg( x(selectPBTobjects_L(1)).MIP ,1,1)  % no layermask, noise filtered
+suffix = '_L';
+printAVP
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% right side recordings from the same flies as above, showing pol responses
@@ -178,6 +192,20 @@ plotCombPolImgManual( x(selectPBTobjects_R(3)).MIP ,0,[1:7])  % no cols
 suffix = '_manualROIs_R3';
 printAVP
 %}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Example bar/pol polar map (right hand AOTU)
+
+loadR73C04_AOTU
+ 
+printpath = fig3path;
+
+prefix = 'barpolImg_';
+
+superUseMSP(x); 
+
+plotBarPolImg( x(selectPBTobjects_R(1)).MIP ,1,1)  % no layermask, noise filtered
+suffix = '_R';
+printAVP
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Various plots for TuTu driver in AOTU

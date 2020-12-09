@@ -44,14 +44,29 @@ convertAngles4Pub = 1; % original polarizer angles are used for correlation
 % calculations etc, but scatter plots modify the angles to fit Weir,Henze
 % et al 2016
 
-runPermutationTest = 0; % shuffles data and recalculates correlation multiple times
+try
+    pathsAVP
+    quickRun = ~publicationXYcorrStats;
+catch
+    quickRun = 1;
+end
+switch quickRun
+    case 0 % run heavy stats methods, takes hours to plot all figs rather thatn minutes
+        runPermutationTest = 1; % shuffles data and recalculates correlation multiple times
+        corrStatMethodPooled = 1; % 0' regular corr coef | 1* bootstrap corr coef (all data) | 2 same as 1 (smaller subset)
+        corrStatMethodIndiv = 4;  % 5' Fisher mean coef, SEM  | 4* Fisher mean with bootstrap CI | 3 regular mean with bootstrap CI
+        %  'quick   *preferred
+        
+    case 1 % plots will appear the same, stats will use quicker method
+        runPermutationTest = 0; % shuffles data and recalculates correlation multiple times
+        corrStatMethodPooled = 0; % 0' regular corr coef | 1* bootstrap corr coef (all data) | 2 same as 1 (smaller subset)
+        corrStatMethodIndiv = 5;  % 5' Fisher mean coef, SEM  | 4* Fisher mean with bootstrap CI | 3 regular mean with bootstrap CI
+end
 
-corrStatMethodPooled = 0; % 0' regular corr coef | 1* bootstrap corr coef (all data) | 2 same as 1 (smaller subset)
-corrStatMethodIndiv = 5;  % 5' Fisher mean coef, SEM  | 4'* Fisher mean with bootstrap CI | 3' regular mean with bootstrap CI
-                          %  'quick   *preferred 
-                          if corrStatMethodPooled~=1 || corrStatMethodIndiv~=4
-                              warning('superXY: running in fast mode, stats may be slightly different to published versions')
-                          end
+if corrStatMethodPooled~=1 || corrStatMethodIndiv~=4
+    warning('superXY: running in fast mode, stats may be slightly different to published versions')
+end
+
 showPlot = 0;
 if showPlot
         figure(919),clf,cla
@@ -561,7 +576,7 @@ if ~Xoff
             
             for n = 1:length(lineHX2)
                 lineHX2(n).Color = meanFitLine;
-                lineHX2(n).LineWidth = 1;
+                lineHX2(n).LineWidth = 0.25;
             end
             
         end
@@ -572,8 +587,8 @@ if ~Xoff
         [lineHX, phi_fitX] = plotPhi_AntPost(obj(inclIdx),amax,posX,phi_0,ax(1),convertAngles4Pub);
         for n = 1:length(lineHX)
             lineHX(n).Color = 'k';
-            lineHX(n).LineWidth = 1;
-            %lineHX(n).LineStyle = ':';
+            lineHX(n).LineWidth = 0.25; % thick lines here produced millions of nodes in the resulting vector format (affinity designer), possibly because of underlying dots 
+            lineHX(n).LineStyle = ':';
         end
     end
     
@@ -775,8 +790,8 @@ if ~Yoff
         [lineHY, phi_fitY] = plotPhi_VentDors(obj(inclIdx),amax,posY,phi_0,ax(2),convertAngles4Pub);
         for n = 1:length(lineHY)
             lineHY(n).Color = 'k';
-            lineHY(n).LineWidth = 1;
-            %lineHY(n).LineStyle = ':';
+            lineHY(n).LineWidth = 0.25; % thick lines here produced millions of nodes in the resulting vector format (affinity designer), possibly because of underlying dots 
+            lineHY(n).LineStyle = ':';
         end
     end
     
@@ -1181,7 +1196,7 @@ end
 end
 function [rho,perm_pval] = circlin_wcorr_permute(phi, x, bounds, weights, showPlot)
 % with help from https://courses.washington.edu/matlab1/Bootstrap_examples.html#1
-nreps = 1000000;
+nreps = 10000;
 
 P = phi;
 X = x;
