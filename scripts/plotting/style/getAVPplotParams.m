@@ -49,6 +49,7 @@ defaultImageHeight_cm = 2.5;
 defaultAxisWidth_cm = 1.5;
 
 axisTickLength = 0.05; % set ticklength  = axisTickLength/ axisDim(max)  in centimeters
-axisLabelFontSize = 6;
+axisLabelFontSize = 5;
 defaultMarkerSize = 3;
 defaultLineWidth = 0.5;
+defaultAxesWidth = 0.3;

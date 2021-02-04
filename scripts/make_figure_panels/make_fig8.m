@@ -105,4 +105,5 @@ printAVP
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% All panels using single cycle responses 
+printpath = fig8path;
 plot_PB_single_cycle

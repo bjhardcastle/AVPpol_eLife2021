@@ -89,7 +89,7 @@ superPolAngResultant(x(inclR),usePSIweighting, usePSIthreshold)
 close(gcf)
 % % print stats (ROI-based to compare with pixel-based method):
 superPolAngResultantROI(x(inclR),usePSIweighting, usePSIthreshold)
-close(gcf)
+close(gcf) 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% R4m EB

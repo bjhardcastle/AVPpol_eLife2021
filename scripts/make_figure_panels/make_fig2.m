@@ -38,10 +38,10 @@ pos_set = setdiff(1:length(x),[selectSetOutliers,selectSetTuTuCompare,selectSetN
 superXY(x(pos_set),0,1,0,[],1,0,1,2)
 suffix = '_pos_tuning';
 printAVP
-
-superXY(x(pos_set),0,1,0,[],0,1,0,2)
-suffix = '_pos_sel';
-printAVP
+% 
+% superXY(x(pos_set),0,1,0,[],0,1,0,2)
+% suffix = '_pos_sel';
+% printAVP
 
 disp(['[R56F07] Positive polarotopy: ' num2str(length([x(pos_set).containsPolMapExp]==4)) '/' num2str(length([x().containsPolMapExp]==4)) ' recordings'])
 
@@ -175,10 +175,10 @@ superXY(x(pos_set),0,1,0,[],1,0,1,2)
 suffix = '_pos_tuning';
 printAVP
 
-superXY(x(pos_set),0,1,0,[],0,1,0,2)
-suffix = '_pos_sel';
-printAVP
-
+% superXY(x(pos_set),0,1,0,[],0,1,0,2)
+% suffix = '_pos_sel';
+% printAVP
+% 
 disp(['[R73C04] Positive polarotopy: ' num2str(length([x(pos_set).containsPolMapExp]==4)) '/' num2str(length([x().containsPolMapExp]==4)) ' recordings'])
 
 other_set = [selectSetOutliers,selectSetTuTuCompare];

@@ -234,9 +234,11 @@ dratio = daspect(ax);
 % for boxplotpsi we use defaultAxisHeight_cm for the print size. Here we'd
 % like the y-axes to be the same size on paper as they'll often sit next to each other. 
 % (although data may exceed this range since clipping is off)
-setAVPaxes(ax,defaultAxisHeight_cm*range(ax.YLim)*dratio(1))
+% setAVPaxes(ax,defaultAxisHeight_cm*range(ax.YLim)*dratio(1))
+setAVPaxes(ax,[],defaultAxisHeight_cm)
 
 tightfig(gcf)
+
 addExportFigToolbar(gcf)
 
 

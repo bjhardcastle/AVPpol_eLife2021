@@ -51,10 +51,7 @@ if ~isempty(hcb)
     htx = [htx; [hcb.Label]'];
 end
 if ~isempty(htx)
-    try
     htx(contains({htx.Visible}, 'off')) = [];
-    catch
-    end
 end
 % Get parents of text objects because the extent is based on the parent
 % position

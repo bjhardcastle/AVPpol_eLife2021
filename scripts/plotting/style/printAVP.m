@@ -9,6 +9,12 @@ elseif ~strcmp('_',prefix(end))
     prefix = [prefix '_'];
 end
 
+% v = ver;
+% if str2double( v(1).Date(end-3:end) ) >= 2020
+% 	useNewMatlabExport = 1;
+% else
+%     useNewMatlabExport = 0;
+% end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % % PNG
 if ~exist(fullfile(printpath,'png'),'dir')
@@ -44,19 +50,19 @@ set(gcf,'PaperPosition',[0 0 figPos(3:4)])
 set(gcf,'color','none');
 % second (good) call overwriting the first:
 print(gcf, fullSavePath , '-dpdf','-painters');
-
 % export_fig(fullSavePath , '-pdf','-painters',gcf); % no transparent patches
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % % SVG
-% if ~exist(fullfile(printpath,'svg'),'dir')
-%     mkdir(fullfile(printpath,'svg'))
-% end
-% fullSavePath = fullfile(printpath,'svg',[prefix savename suffix]);
-% set(gcf, 'InvertHardCopy', 'off');
-% set(gcf,'color','none');
-% print(gcf, fullSavePath , '-dsvg','-painters');
-
+%{
+if ~exist(fullfile(printpath,'svg'),'dir')
+    mkdir(fullfile(printpath,'svg'))
+end
+fullSavePath = fullfile(printpath,'svg',[prefix savename suffix]);
+set(gcf, 'InvertHardCopy', 'off');
+set(gcf,'color','none');
+print(gcf, fullSavePath , '-dsvg','-painters');
+%}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % % After printing is done
 close(gcf)

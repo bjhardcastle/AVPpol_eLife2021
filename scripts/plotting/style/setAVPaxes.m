@@ -11,9 +11,37 @@ if nargin < 3
     axWidth_cm = [];
 end
 
-
-
 axUnitStr = ax.Units;
+ax.TickDir = 'out';
+
+ax.Box = 'off';
+
+ax.FontSize = axisLabelFontSize;
+ax.FontWeight = 'normal';
+ax.LineWidth = defaultAxesWidth;
+
+if ~strcmp(ax.Type,'polaraxes')
+    ax.XAxis.Label.FontSize = axisLabelFontSize;
+    ax.YAxis.Label.FontSize = axisLabelFontSize;
+    ax.XAxis.Color = [0 0 0];
+    ax.YAxis.Color = [0 0 0];
+    ax.XAxis.FontName = 'arial';
+    ax.YAxis.FontName = 'arial';
+else
+    ax.ThetaAxis.Label.FontSize = axisLabelFontSize;
+    ax.RAxis.Label.FontSize = axisLabelFontSize;
+    ax.ThetaAxis.Color = [0 0 0];
+    ax.RAxis.Color = [0 0 0];
+    ax.ThetaAxis.FontName = 'arial';
+    ax.RAxis.FontName = 'arial';
+end
+ax.Title.FontSize = axisLabelFontSize;
+ax.Title.FontWeight = 'normal';
+% ax.Title.FontName = 'arial';
+
+set(ax,'layer','top')
+
+
 origDim = [ax.Position(3) ax.Position(4)];
 [maxVal,maxDim] = max(origDim);
 ax.ActivePositionProperty = 'position';
@@ -26,6 +54,8 @@ ax.Units = 'centimeters';
 %     rescale_factorY = ax.Position(3)/ax.Position(4);
 % end
 % ax.TickLength(1) = axisTickLength./ax.Position(2+maxDim);
+
+
 if isprop(ax,'PlotBoxAspectRatio')
     pbar = ax.PlotBoxAspectRatio(2)/ax.PlotBoxAspectRatio(1);
 else
@@ -45,6 +75,7 @@ if ~isempty(axHeight_cm)
         ax.Position(3) = rescale_factorY;
     end
 end
+
 
 % ax.TickLength(1) = ax.TickLength(1)*(origDim(maxDim)/ax.Position(2+maxDim));
 % if strcmp(ax.DataAspectRatioMode,'manual') || strcmp(ax.PlotBoxAspectRatioMode,'manual')
@@ -73,32 +104,4 @@ if ~strcmp(ax.Type,'polaraxes') ...
 else
     ax.TickLength = [1 1].*axisTickLength./(max([ax.Position(3) ax.Position(4)]));
 end
-% ax.Units = axUnitStr;
-ax.TickDir = 'out';
-
-ax.Box = 'off';
-
-ax.FontSize = axisLabelFontSize;
-ax.FontWeight = 'normal';
-
-if ~strcmp(ax.Type,'polaraxes')
-    ax.XAxis.Label.FontSize = axisLabelFontSize;
-    ax.YAxis.Label.FontSize = axisLabelFontSize;
-    ax.XAxis.Color = [0 0 0];
-    ax.YAxis.Color = [0 0 0];
-    ax.XAxis.FontName = 'arial';
-    ax.YAxis.FontName = 'arial';
-else
-    ax.ThetaAxis.Label.FontSize = axisLabelFontSize;
-    ax.RAxis.Label.FontSize = axisLabelFontSize;
-    ax.ThetaAxis.Color = [0 0 0];
-    ax.RAxis.Color = [0 0 0];
-    ax.ThetaAxis.FontName = 'arial';
-    ax.RAxis.FontName = 'arial';
-end
-ax.Title.FontSize = axisLabelFontSize;
-ax.Title.FontWeight = 'normal';
-% ax.Title.FontName = 'arial';
-
-set(ax,'layer','top')
 

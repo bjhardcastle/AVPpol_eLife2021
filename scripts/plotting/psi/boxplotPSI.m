@@ -48,7 +48,7 @@ end
 
 % Get CI size with Bonferroni correction applied
 grpLength = sum(cellfun(nonNanCells,bkgData));
-alphaVal = 0.05/grpLength;
+alphaVal = 0.05;%/grpLength;
 [bkgHandles,bkgStats] = notBoxPlot([bkgData{:}],[bkgXpos{:}],'style','sdline','markMedian',true,'jitter',0.7,'manualCI',alphaVal);
 
 hold(ax,'on')
@@ -67,7 +67,7 @@ for bIdx = 1:size(objNames(objSel),1)
         bkgHandles(bIdx).data.MarkerSize = defaultMarkerSize;
         
         bkgHandles(bIdx).mu.Color = 'k';
-        bkgHandles(bIdx).med.Color ='k';
+        bkgHandles(bIdx).med.Color ='none';
         
         bkgHandles(bIdx).sd.Visible = 'off';
         
@@ -111,7 +111,7 @@ hold(ax,'on')
 
 % Get CI size with Bonferroni correction applied
 grpLength = sum(cellfun(nonNanCells,cellData));
-alphaVal = 0.05/grpLength;
+alphaVal = 0.05;%/grpLength;
 [cellHandles,cellStats] = notBoxPlot([cellData{:}],[cellXpos{:}],'style','sdline','markMedian',true,'jitter',0.7,'manualCI',alphaVal);
 for cIdx = 1:size(objNames(objSel),1)
     if ~isempty(cellHandles(cIdx).data)
@@ -134,7 +134,7 @@ for cIdx = 1:size(objNames(objSel),1)
         cellHandles(cIdx).data.MarkerSize = defaultMarkerSize;
         
         cellHandles(cIdx).mu.Color = cellCol;
-        cellHandles(cIdx).med.Color =cellCol;
+        cellHandles(cIdx).med.Color = 'none';
         
         cellHandles(cIdx).sd.Visible = 'off';
         
@@ -183,9 +183,9 @@ ax.XLim = [0.3 size(objNames,1)+0.7];
 ax.YGrid = 'on';
 daspect([6,1,1])
 setAVPaxes(ax,defaultAxisHeight_cm)
-tightfig(gcf)
 offsetAxesXTickONLY(ax)
 ax.Layer = 'bottom';
+tightfig(gcf)
 
 addExportFigToolbar(gcf)
 
@@ -215,9 +215,9 @@ for fIdx= 1:size(objNames,1)
 %             pval = ranksum(cellStats(fN).vals,bkgStats(fN).vals);
             [~,pval] = ttest(cellStats(fN).vals,bkgStats(fN).vals);
 
-            fprintf([objNames{fIdx} ' [%s]: cells (%1.3f CI%1.3f) v bkg (%1.3f CI%1.3f), p=%1.6f t-test, N=%d\n'],...
-                polVals,cellStats(fN).mu,cellStats(fN).sd,bkgStats(fN).mu,bkgStats(fN).sd,pval,cellStats(fN).N)
-            if pval<alphaVal
+            fprintf([objNames{fIdx} ' [%s]: cells (%1.3f CI%1.1f[%1.3f %1.3f]) v bkg (%1.3f CI[%1.3f %1.3f]), p=%1.6f t-test, N=%d\n'],...
+                polVals,cellStats(fN).mu,(1-alphaVal)*100,cellStats(fN).mu-cellStats(fN).interval,cellStats(fN).mu+cellStats(fN).interval,bkgStats(fN).mu,bkgStats(fN).mu-bkgStats(fN).interval,bkgStats(fN).mu+bkgStats(fN).interval,pval,cellStats(fN).N)
+            if pval<0.05/grpLength
                 text(fIdx,ax.YLim(2),'*','FontSize',8,'HorizontalAlignment','Center','BackGroundColor','none', 'Tag','asterisk','VerticalAlignment','middle');
             end
         else
@@ -226,13 +226,13 @@ for fIdx= 1:size(objNames,1)
             [~,pvalcell] = ttest(cellStats(fN).vals);
             [~,pvalbkg] = ttest(bkgStats(fN).vals);
 
-            fprintf([objNames{fIdx} ' [' char(916) 'cells]: %1.3f CI%1.3f p=%1.6f t-test, N=%d\n'],...
-                cellStats(fN).mu,cellStats(fN).sd,pvalcell,cellStats(fN).N) 
-            if pvalcell<alphaVal
+            fprintf([objNames{fIdx} ' [' char(916) 'cells]: %1.3f CI%1.1f[%1.3f %1.3f] p=%1.6f t-test, N=%d\n'],...
+                cellStats(fN).mu,(1-alphaVal)*100,cellStats(fN).mu-cellStats(fN).interval,cellStats(fN).mu+cellStats(fN).interval,pvalcell,cellStats(fN).N) 
+            if pvalcell<0.05/grpLength
                 text(fIdx,ax.YLim(2),'*','FontSize',8,'HorizontalAlignment','Center','BackGroundColor','none', 'Tag','asterisk','VerticalAlignment','middle');
             end
-            fprintf([objNames{fIdx} ' [' char(916) 'bkg]: %1.3f CI%1.3f p=%1.6f t-test, N=%d\n'],...
-                bkgStats(fN).mu,bkgStats(fN).sd,pvalbkg,bkgStats(fN).N) 
+            fprintf([objNames{fIdx} ' [' char(916) 'bkg]: %1.3f CI%1.1f[%1.3f %1.3f] p=%1.6f t-test, N=%d\n'],...
+                bkgStats(fN).mu,(1-alphaVal)*100,bkgStats(fN).mu-bkgStats(fN).interval,bkgStats(fN).mu+bkgStats(fN).interval,pvalbkg,bkgStats(fN).N) 
         end
         end
     end

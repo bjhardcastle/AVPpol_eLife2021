@@ -6,6 +6,10 @@ thisfigpath = fig8s1path;
 if exist(thisfigpath,'dir')
     try rmdir(thisfigpath,'s'),end
 end
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% All panels using single cycle responses 
+printpath = fig8s1path;
+plot_PB_single_cycle
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Glomerulus pairing scheme

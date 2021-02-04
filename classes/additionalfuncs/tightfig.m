@@ -12,7 +12,6 @@ function varargout = tightfig(hfig)
 %   instead.
 %
 %
-
     if nargin == 0
         hfig = gcf;
     end

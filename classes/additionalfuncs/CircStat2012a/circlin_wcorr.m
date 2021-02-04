@@ -98,7 +98,7 @@ theta_fit = mod(2*pi*abs(amax1)*x,2*pi);
 %     N = sum(weights.*sin(phi - phi_mean).*sin(theta_fit-theta_mean));
        
 % Suggested modification for uniform data ( x ) : resultants of one
-% parameter minus the other
+% parazeter minus the other
 N = sqrt (  mean(cos((phi -theta_fit))).^2 +  mean(sin((phi -theta_fit))).^2 )  -  sqrt (  mean(cos((phi +theta_fit))).^2 +  mean(sin((phi +theta_fit))).^2 ) ;
 
 % % As above except : resultant of one, minus resultant of the other

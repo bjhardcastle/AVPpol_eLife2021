@@ -113,7 +113,7 @@ savename = 'TuBu_max';
 for aidx = 1:length(areaStr)
     
     xpos = 1:sum(~cellfun(@isempty,lineStr(:,aidx)));
-    alphaVal = 0.05/length(xpos); % Bonferroni correction
+    alphaVal = 0.05;%/length(xpos); % Bonferroni correction removed
     
     figure('color','w')
     ax = gca;
@@ -162,8 +162,8 @@ for aidx = 1:length(areaStr)
                     if ~isempty(bkgHandles(bIdx).data)
                         bkgHandles(bIdx).semPtch.FaceColor = lightGreyCol;
                         bkgHandles(bIdx).data.Color = darkGreyCol;
-                        bkgHandles(bIdx).mu.Color = objCols.(lineStr{bIdx});
-                        bkgHandles(bIdx).med.Color =objCols.(lineStr{bIdx});
+                        bkgHandles(bIdx).mu.Color = objCols.(lineStr{sidx,aidx});
+                        bkgHandles(bIdx).med.Color = 'none';
                         
                         
                         bkgHandles(bIdx).semPtch.EdgeColor = 'none';
@@ -184,9 +184,9 @@ for aidx = 1:length(areaStr)
                         % run stats, print in command window, add asterisks
                         [~,pvalbkg] = ttest(bkgStats(bIdx).vals);
                         %                         pvalbkg = signrank(bkgStats(bIdx).vals);
-                        fprintf([lineStr{sidx,aidx} ' [' char(916) 'F/Fmax]: %1.3f CI%1.3f p=%1.6f t-test, N=%d\n'],...
-                            bkgStats(bIdx).mu,bkgStats(bIdx).sd,pvalbkg,bkgStats(bIdx).N)
-                        if pvalbkg<alphaVal
+                        fprintf([lineStr{sidx,aidx} ' [' char(916) 'F/Fmax]: %1.3f CI95[%1.3f %1.3f] p=%1.6f t-test, N=%d\n'],...
+                            bkgStats(bIdx).mu,bkgStats(bIdx).mu-bkgStats(bIdx).interval,bkgStats(bIdx).mu+bkgStats(bIdx).interval,pvalbkg,bkgStats(bIdx).N)
+                        if pvalbkg<alphaVal/length(xpos)
                             text(xpos(sidx),ax.YLim(2),'*','FontSize',8,'HorizontalAlignment','Center','BackGroundColor','none', 'Tag','asterisk','VerticalAlignment','middle');
                         end
                         

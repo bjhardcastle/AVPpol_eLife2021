@@ -31,7 +31,7 @@ if nargin < 9 || isempty(UseMSPifLayerMasksEmpty)
     % 2, force MSP to be used
 end
 
-applyWeights =0; % Weighted correlation using pol selectivity for each pixel
+applyWeights = 0; % Weighted correlation using pol selectivity for each pixel
 if ~applyTuningCols
     applyPSICols = 1; % If zero, a solid color is applied to all points
 end
@@ -62,7 +62,6 @@ switch quickRun
         corrStatMethodPooled = 0; % 0' regular corr coef | 1* bootstrap corr coef (all data) | 2 same as 1 (smaller subset)
         corrStatMethodIndiv = 5;  % 5' Fisher mean coef, SEM  | 4* Fisher mean with bootstrap CI | 3 regular mean with bootstrap CI
 end
-
 if corrStatMethodPooled~=1 || corrStatMethodIndiv~=4
     warning('superXY: running in fast mode, stats may be slightly different to published versions')
 end
@@ -805,7 +804,6 @@ if ~Yoff
     
     flyIdx = indYFly;
     rhoIndiv = rhoY;
-    
     switch corrStatMethodPooled
         case 0 
             % use existing values
@@ -887,7 +885,7 @@ if ~Yoff
     set(ax(2),'xtick',[0,0.25,0.5,0.75, 1])
     set(ax(2),'xticklabel',{'ventral';'';'';'';'dorsal'})
     
-    ax(2).XLabel.String =   'position';
+    ax(2).XLabel.String =   'normalized position';
     %     ax(2).XLabel.String =  ['ventral '  char(8594) ' dorsal'];
     
     ylabel(ax(2),'preferred AoP')
@@ -1111,6 +1109,7 @@ if strcmp(obj.Cell,'R7R8') % || strcmp(obj(oidx).Cell,'MeTu')
     end
     
 else
+    
 %     if leftFlag
 %         bounds = [-0.5 1];
 %     else
@@ -1130,6 +1129,11 @@ end
 if convertAngles4Pub
     rho = -rho;
 end
+if strcmp(obj.Area,'AOTu') && ( contains(obj.Line,'R34H10')||contains(obj.Line,'R88A06') )
+        rho = abs(rho);
+end
+
+
 end
 function [lineHandle, phi_fit_returned] = plotPhi_VentDors(obj,amax,YpositionData,phi_0,ax,convertAngles4Pub)
 colstr = 'k';
