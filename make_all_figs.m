@@ -22,7 +22,10 @@ make_fig1s2
 make_fig2
 make_fig3
 make_fig3s1
+make_fig4
+make_fig5
 make_fig6
+make_fig6s1
 make_fig7
 make_fig8
 make_fig8s1

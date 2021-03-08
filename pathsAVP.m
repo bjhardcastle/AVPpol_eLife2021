@@ -6,7 +6,7 @@ orig_path_mode = 0; % for testing updated objarrays before copying to minimal da
 original_data_path = 'Y:\ben\avp_pol\18_data\';
 raw_data_path = fullfile(fileparts(rootpathAVP), '18_data');
 
-publicationXYcorrStats = 1; % plots will appear the same either way, but setting to 1 will run more time-consuming stats (total run time to make all figs becomes hours rather than minutes)
+publicationXYcorrStats = 0; % plots will appear the same either way, but setting to 1 will run more time-consuming stats (total run time to make all figs becomes hours rather than minutes)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % add all required subfolders to search path (temporary)
