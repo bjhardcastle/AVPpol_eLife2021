@@ -37,12 +37,12 @@ objCols.R19C08_Bu = [220 25 34]./255;       % red
 objCols.R78B06_Bu = [192 27 72]./255;       % red/purple
 objCols.SS00096_PB = [203 158 56]./255;     % yellow 
 
-fig2s3ROIcols(1,:) = [32 96 33]./255;       % dark green
-fig2s3ROIcols(2,:) = [51 153 52]./255;      % mid green
-fig2s3ROIcols(3,:) = [159 223 160]./255;    % light green
-fig2s3ROIcols(4,:) = [33 32 96]./255;       % dark blue
-fig2s3ROIcols(5,:) = [65 64 191]./255;      % mid blue
-fig2s3ROIcols(6,:) = [160 159 223]./255;    % light blue
+fig3s1ROIcols(1,:) = [32 96 33]./255;       % dark green
+fig3s1ROIcols(2,:) = [51 153 52]./255;      % mid green
+fig3s1ROIcols(3,:) = [159 223 160]./255;    % light green
+fig3s1ROIcols(4,:) = [33 32 96]./255;       % dark blue
+fig3s1ROIcols(5,:) = [65 64 191]./255;      % mid blue
+fig3s1ROIcols(6,:) = [160 159 223]./255;    % light blue
 %% Plot aesthetics ** 
 defaultAxisHeight_cm = 2;
 defaultImageHeight_cm = 2.5;

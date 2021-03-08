@@ -1,9 +1,9 @@
-% Generate plots for Fig5 (various PSI distributions in TuBu drivers in BU)
+% Generate plots for fig7 (various PSI distributions in TuBu drivers in BU)
 % Each cell can be run independently
 
 pathsAVP
-if exist(fullfile(fig5path),'dir')
-    try rmdir(fullfile(fig5path),'s'),end
+if exist(fullfile(fig7path),'dir')
+    try rmdir(fullfile(fig7path),'s'),end
 end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -19,7 +19,7 @@ objStr{3} = 'R88A06_Bu_ant';
 objStr{4} = 'R34H10_Bu';
 
 pathsAVP
-printpath = fig5path;
+printpath = fig7path;
 savename = 'TuBu_Bu';
 prefix = 'psi_';
 
@@ -87,7 +87,7 @@ end
 % shown by high PSI:
 
 loadR88A06_Bu
-printpath = fig5path;
+printpath = fig7path;
 superUseMSP(x,1)
 superPolThreshold(x,-1); 
 
@@ -135,7 +135,7 @@ printAVP
 % together later. Saves making a whole new object with masks drawn around
 % sup+ant bulb just for this figure.
 loadR88A06_Bu_ant
-printpath = fig5path;
+printpath = fig7path;
 superUseMSP(x,1)
 superPolThreshold(x,-1);
 
@@ -157,7 +157,7 @@ printAVP
 % find a roughly uniform distribution on each side of the brain:
 
 loadR34H10_Bu
-printpath = fig5path;
+printpath = fig7path;
 superUseMSP(x,1)
 superPolThreshold(x,-1);
 

@@ -61,7 +61,7 @@ getAVPplotParams
 loadROIs([x([selectPBTobjects_L,selectPBTobjects_R]).MIP])
 for oidx = [selectPBTobjects_L,selectPBTobjects_R]
    for ridx = 1:6
-       x(oidx).MIP.ROI(ridx).color = fig2s3ROIcols(ridx,:);
+       x(oidx).MIP.ROI(ridx).color = fig3s1ROIcols(ridx,:);
    end
    x(oidx).MIP.UseFixedResp = 1;
 end

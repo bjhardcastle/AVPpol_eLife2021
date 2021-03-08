@@ -1,9 +1,9 @@
-% Generate plots for Fig2s3 (various polarotopies in two MeTu drivers in AOTU)
+% Generate plots for fig3s1 (various polarotopies in two MeTu drivers in AOTU)
 % Each cell can be run independently
 
 pathsAVP
-if exist(fullfile(fig2s1path),'dir')
-    try rmdir(fullfile(fig2s1path),'s'),end
+if exist(fullfile(fig3s1path),'dir')
+    try rmdir(fullfile(fig3s1path),'s'),end
 end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -12,7 +12,7 @@ end
 
 loadR56F07_AOTU
  
-printpath = fig2s1path;
+printpath = fig3s1path;
 
 superUseMSP(x,1)
 superPolThreshold(x,-1);
@@ -27,7 +27,7 @@ printAVP
 %{
 loadR56F07_AOTU
  
-printpath = fig2s1path;
+printpath = fig3s1path;
 
 superUseMSP(x,1)
 superPolThreshold(x,-1);
@@ -50,7 +50,7 @@ disp(['[R56F07] Positive polarotopy: ' num2str(length([x(pos_set).containsPolMap
 
 loadR56F07_AOTU
  
-printpath = fig2s1path;
+printpath = fig3s1path;
 
 superUseMSP(x,1)
 superPolThreshold(x,-1);
@@ -72,7 +72,7 @@ disp(['[R56F07] Negative polarotopy: ' num2str(length([x(neg_set).containsPolMap
 
 loadR56F07_AOTU
  
-printpath = fig2s1path;
+printpath = fig3s1path;
 
 superUseMSP(x,1)
 superPolThreshold(x,-1);
@@ -87,7 +87,7 @@ printAVP
 
 loadR56F07_AOTU
  
-printpath = fig2s1path;
+printpath = fig3s1path;
 
 superUseMSP(x,1)
 superPolThreshold(x,-1);
@@ -106,7 +106,7 @@ disp(['[R56F07] Negative polarotopy: ' num2str(length([x(neg_set).containsPolMap
 %% 56F07 tuning map, example2: less-frequent negative polarotopy
 loadR56F07_AOTU
  
-printpath = fig2s1path;
+printpath = fig3s1path;
 
 superUseMSP(x,1)
 superPolThreshold(x,-1);
@@ -119,7 +119,7 @@ printAVP
 %% 56F07 PSI map, for example2 above, including layer mask
 loadR56F07_AOTU
  
-printpath = fig2s1path;
+printpath = fig3s1path;
 
 plotPolSelImg( x(selectObj(3)).MIP ,1,-1)  % with  mask applied
 prefix = 'polSelectivity_';
@@ -133,7 +133,7 @@ printAVP
 
 loadR73C04_AOTU
  
-printpath = fig2s1path;
+printpath = fig3s1path;
 
 superUseMSP(x,1)
 superPolThreshold(x,-1);
@@ -148,7 +148,7 @@ printAVP
 %{
 loadR73C04_AOTU
  
-printpath = fig2s1path;
+printpath = fig3s1path;
 
 superUseMSP(x,1)
 superPolThreshold(x,-1);
@@ -171,7 +171,7 @@ disp(['[R73C04] Positive polarotopy: ' num2str(length([x(pos_set).containsPolMap
 % common positive one
 loadR73C04_AOTU
  
-printpath = fig2s1path;
+printpath = fig3s1path;
 
 superUseMSP(x,1)
 superPolThreshold(x,-1);
@@ -193,7 +193,7 @@ disp(['[R73C04] Other polarotopy (outliers): ' num2str(length([x(other_set).cont
 
 loadR73C04_AOTU
  
-printpath = fig2s1path;
+printpath = fig3s1path;
 
 superUseMSP(x,1)
 superPolThreshold(x,-1);
@@ -209,7 +209,7 @@ printAVP
 
 loadR73C04_AOTU
  
-printpath = fig2s1path;
+printpath = fig3s1path;
 
 superUseMSP(x,1)
 superPolThreshold(x,-1);

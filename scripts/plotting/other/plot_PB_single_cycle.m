@@ -199,7 +199,7 @@ addExportFigToolbar(gcf)
 prefix = 'relative_';
 savename = 'EPG_PB';
 suffix = 'pdf_bar';
-printpath = fig8path;
+printpath = fig10path;
 printAVP
  
 disp(['n=' num2str(length(tuning(:))) ' ROIs, N='  num2str(length(unique(flyid))) ' flies']);
@@ -237,7 +237,7 @@ addExportFigToolbar(gcf)
 prefix = 'mean_relative';
 savename = 'PBgrid';
 suffix = 'dist_unsigned';
-printpath = fig8s1path;
+printpath = fig10s1path;
 printAVP
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -256,7 +256,7 @@ tightfig(gcf)
 prefix = 'relative';
 savename = 'PBgrid';
 suffix = 'dist_signed';
-printpath = fig8s1path;
+printpath = fig10s1path;
 printAVP
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -369,7 +369,7 @@ tightfig(gcf)
 suffix = 'scatter';
 savename = 'EPG';
 prefix = 'half_cyc_sel';
-printpath = fig8path;
+printpath = fig10path;
 printAVP
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

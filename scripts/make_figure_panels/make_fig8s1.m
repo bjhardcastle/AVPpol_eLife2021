@@ -1,9 +1,9 @@
-% Generate plots for Fig6s5 (TuBu/R4m polarotopy scatter plots, anterior bulb)
+% Generate plots for fig8s1 (TuBu/R4m polarotopy scatter plots, anterior bulb)
 % Each cell can be run independently
 
 pathsAVP
-if exist(fullfile(fig6s1path),'dir')
-    try rmdir(fullfile(fig6s1path),'s'),end
+if exist(fullfile(fig8s1path),'dir')
+    try rmdir(fullfile(fig8s1path),'s'),end
 end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -12,7 +12,7 @@ end
 pathsAVP
 
 lineStr = 'R34H10_Bu';
-printpath = fig6s1path;
+printpath = fig8s1path;
 
 savePlotStr = {'horiz_all';'vert_all';'circ_all'};
 plot_TuBu_a_R4m_EPG_ROIstruct_polarotopy 
@@ -25,7 +25,7 @@ plot_TuBu_a_R4m_EPG_ROIstruct_polarotopy
 pathsAVP
 
 lineStr = 'R34D03_Bu';
-printpath = fig6s1path;
+printpath = fig8s1path;
 
 savePlotStr = {'horiz_all';'vert_all';'circ_all'};
 plot_TuBu_a_R4m_EPG_ROIstruct_polarotopy 

@@ -1,9 +1,9 @@
-% Generate plots for Fig7 (TuBu/R4m population resultant tunings)
+% Generate plots for fig9 (TuBu/R4m population resultant tunings)
 % Each cell can be run independently
 
 pathsAVP
-if exist(fullfile(fig7path),'dir')
-    try rmdir(fullfile(fig7path),'s'),end
+if exist(fullfile(fig9path),'dir')
+    try rmdir(fullfile(fig9path),'s'),end
 end
 % % % add left and right resultant plots and print info
 
@@ -14,7 +14,7 @@ end
 % distribution and a short resultant:
 
 loadR34H10_Bu
-printpath = fig7path;
+printpath = fig9path;
 
 superUseMSP(x,1)
 superPolThreshold(x,-1)
@@ -56,7 +56,7 @@ close(gcf)
 % distribution and a longer resultant:
 
 loadR34D03_Bu
-printpath = fig7path;
+printpath = fig9path;
 
 superUseMSP(x,1)
 superPolThreshold(x,-1)
@@ -97,7 +97,7 @@ close(gcf)
 % in an individual fly, we see a range of angles with a less uniform
 % distribution and a longer resultant:
 loadR34D03_EB
-printpath = fig7path;
+printpath = fig9path;
 
 superUseMSP(x,1)
 superPolThreshold(x,-1)
@@ -116,7 +116,7 @@ printAVP
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% R4m EB selectivity, tuning maps, polar histograms
 loadR34D03_EB
-printpath = fig7path;
+printpath = fig9path;
 superUseMSP(x,1)
 superPolThreshold(x,-1)
 
@@ -151,7 +151,7 @@ end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Example average pol response from whole EB/all R4m
 loadR34D03_EB
-printpath = fig7path;
+printpath = fig9path;
 superUseMSP(x,1)
 
 for sIdx = [1,3,6]

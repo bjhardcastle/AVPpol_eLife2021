@@ -1,17 +1,17 @@
-% Generate plots for Fig9 (overall pathway diagram, tuning curves, psi vals )
+% Generate plots for Appendix1Fig1 (overall pathway diagram, tuning curves, psi vals )
 % Each cell can be run independently
 
 pathsAVP
-thisfigpath = fig1s3path;
+thisfigpath = figX1path;
 if exist(thisfigpath,'dir')
     try rmdir(thisfigpath,'s'),end
 end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% PSI vals (All cells)
-% printpath = fig8s1path;
+% printpath = fig10s1path;
 pathsAVP
-printpath = fig1s3path;
+printpath = figX1path;
 
 prefix = 'psi_';
 
@@ -57,7 +57,7 @@ printAVP
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Tuning curves for all cells 
 pathsAVP
-printpath = fig1s3path;
+printpath = figX1path;
 getAVPplotParams
 alpha = 0.3;
 for nidx = 1:size(objnames,1)

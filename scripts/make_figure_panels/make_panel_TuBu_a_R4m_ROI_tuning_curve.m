@@ -48,7 +48,7 @@ end
 
 %% Plot all normalized responses and their mean
 %{
-printpath = fig6path;
+printpath = fig8path;
 savename = 'TuBu_R4m';
 
 prefix = 'normalized_resp';
@@ -78,7 +78,7 @@ printAVP
 %}
 
 %% Plot mean normalized response with a shaded error bar
-printpath = fig6path;
+printpath = fig8path;
 savename = 'TuBu_R4m';
 
 prefix = 'normalized_resp';

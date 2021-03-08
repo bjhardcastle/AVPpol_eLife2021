@@ -18,7 +18,7 @@ end
 % % prepare for plotting
 
 getAVPplotParams
-printpath = fig4s1path;
+printpath = fig6s1path;
 prefix = 'blue_flash';
 
 maskStr = {'cell'}; %originally included 'layer'

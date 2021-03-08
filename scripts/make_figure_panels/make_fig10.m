@@ -1,15 +1,15 @@
-% Generate plots for Fig8 (E-PG responses in protocerebral bridge)
+% Generate plots for fig10 (E-PG responses in protocerebral bridge)
 % Each cell can be run independently
 
 pathsAVP
-if exist(fullfile(fig8path),'dir')
-    try rmdir(fullfile(fig8path),'s'),end
+if exist(fullfile(fig10path),'dir')
+    try rmdir(fullfile(fig10path),'s'),end
 end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Tuning and selectivity maps in PB
 loadSS00096_PB
-printpath = fig8path;
+printpath = fig10path;
 
 superUseMSP(x,1)
 superPolThreshold(x,-1); 
@@ -33,7 +33,7 @@ end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% PSI values in E-PG (and R4m EB for comparison)
 pathsAVP
-printpath = fig8path;
+printpath = fig10path;
 prefix = 'psi_';
 
 savename = 'EPG_R4m';
@@ -58,7 +58,7 @@ printAVP
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Example glomerulus-pair ROI traces 
 loadSS00096_PB
-printpath = fig8path;
+printpath = fig10path;
 
 exampleRec = selectObj(3);
 exampleROIs = [2,6];
@@ -73,7 +73,7 @@ printAVP
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Example cycle tuning vector grid with PSI colormap 
 loadSS00096_PB
-printpath = fig8path;
+printpath = fig10path;
 
 exampleRec = selectObj(3);
 exampleROIs = [2,6];
@@ -105,5 +105,5 @@ printAVP
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% All panels using single cycle responses 
-printpath = fig8path;
+printpath = fig10path;
 plot_PB_single_cycle

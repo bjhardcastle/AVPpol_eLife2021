@@ -1,9 +1,9 @@
-% Generate plots for Fig6 (TuBu/R4m comparison in anterior bulb)
+% Generate plots for fig8 (TuBu/R4m comparison in anterior bulb)
 % Each cell can be run independently
 
 pathsAVP
-if exist(fullfile(fig6path),'dir')
-    try rmdir(fullfile(fig6path),'s'),end
+if exist(fullfile(fig8path),'dir')
+    try rmdir(fullfile(fig8path),'s'),end
 end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -11,7 +11,7 @@ end
 objStr = {'R19C08_Bu';'R34D03_Bu'};
 
 pathsAVP
-printpath = fig6path;
+printpath = fig8path;
 savename = 'Ring';
 prefix = 'psi_';
 
@@ -30,7 +30,7 @@ printAVP
 
 %% PSI values in R4m alone, compared to controls
 pathsAVP
-printpath = fig6path;
+printpath = fig8path;
 savename = 'R4m';
 prefix = 'psi_';
 
@@ -49,7 +49,7 @@ printAVP
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Tuning map in TuBu_a in anterior bulb 
 loadR34H10_Bu
-printpath = fig6path;
+printpath = fig8path;
 superUseMSP(x,1)
 superPolThreshold(x,-1); 
 
@@ -77,7 +77,7 @@ printAVP
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Tuning map in R4m in anterior bulb 
 loadR34D03_Bu
-printpath = fig6path;
+printpath = fig8path;
 superUseMSP(x,1)
 superPolThreshold(x,-1); 
 
@@ -101,7 +101,7 @@ printAVP
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Tuning map in R2 in superior bulb (Gal4 #1 - individual layer)
 loadR19C08_Bu
-printpath = fig6path;
+printpath = fig8path;
 superUseMSP(x,1)
 superPolThreshold(x,-1); 
 
