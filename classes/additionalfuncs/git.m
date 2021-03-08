@@ -26,6 +26,19 @@ cmdstr = strjoin([gitexepath, varargin]);
 [status, cmdout] = system(cmdstr);
 %}
 
+% messages must be enclosed in quotation marks to work correctly with
+% 'system' and git. If we forget to enter them in the command line just
+% insert them here:
+if any(strcmp(varargin,'-m'))
+    msgIdx = find( strcmp(varargin,'-m')) + 1;
+    if ~strcmp(varargin{msgIdx}(1),'"')
+        varargin{msgIdx} = ['"' varargin{msgIdx}];
+    end
+    if ~strcmp(varargin{msgIdx}(end),'"')
+        varargin{msgIdx} = [varargin{msgIdx} '"'];
+    end
+end
+
 % Execute the command (fixed to handle space in path):
 [status, cmdout] = system(['"C:\Program Files\Git\bin\git.exe" ' strjoin(varargin)]);
 
