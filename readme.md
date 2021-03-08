@@ -1,7 +1,6 @@
-Individual files can be viewed in file-tree or entire folders downloaded as zip files:  
-- `/mat` contains ~15 GB of data  
-- `/classes` & `/scripts` contain small .m files only
+Two-photon calcium imaging  analysis code for investigation of polarization-sensitive neurons in the Drosophila anterior visual pathway (AVP)
 
+Corresponding data can be found in the [project repository][3] at the Open Science Framework.
 
 ----------
 
@@ -33,30 +32,6 @@ Matlab object classes with core functions for analysis of tiff files:
 - ##### **/additionalfuncs, /icons** 
     Extra functions for plotting or viewing data, many third-party, including modified version of James Strother's Neuron Image Analysis GUI for playback of tiff files: [bitbucket.com/jastrother][2] 
 
-----------
-
-
-#### **/mat**
-
-Matlab .mat files containing data and object arrays: 
-- ##### **/aux_data_backup**  (~5 GB)  
-    Minimal storage of data.  
-    Subfolders organized by neuropil, cell-type, Gal4 line, then date.  
-    Files associated with a single recording are grouped, including max intensity projections, ROIs, masks, etc. 
-
-- ##### **/objarrays**  (~10 GB)
-    One .mat file per cell-type.  
-    Each contains a `[1xN]` `avp4DsuperObj` array  
-
-- ##### **/plotting, /psi**  (<20 MB)
-    Additional derived data stored to save processing time.
-
-----------
-
-
-#### **/plots**
-Printed plots from Matlab: .pdf & .png organized by figure.  
- - `commandWindow.log` contains record of stats returned during analysis when run via `make_all_figs.m`
 
 ----------
 
@@ -75,25 +50,6 @@ Printed plots from Matlab: .pdf & .png organized by figure.
 
 ----------
 
-#### **explore data**
-All folders are required, with the structure preserved.
-
-Add certain folders to Matlab's search path by running `pathsAVP.m` from the root folder.  
-
-Load an object array with one of the files in `/load_object_functions`: 
-
-    loadDmDRA   % loads [1xN] avp4DsuperObj array as variable 'x'
-  
-A quick way to explore selectivity and tuning values in each recording is through a GUI for making masks/ROIs:
-
-    maskLayers(x(1))    % open GUI with the first recording in the array
-
-@[osf](https://osf.io/x7asg/)
-
-Selectivity and tuning maps can be toggled on/off. Scatter plots can also be produced to examine polarotopy within the mask (applies threshold in 'selectivity' text box):
-@[osf](https://osf.io/vgzyu)
-
-
 #### **notes**
 
 Convert polarizer angles as-recorded to convetion used in publication: `wrapTo180(-theta-270)`
@@ -102,4 +58,5 @@ Convert polarizer angles as-recorded to convetion used in publication: `wrapTo18
 
   [1]: https://github.com/bjhardcastle/SlidebookObj
   [2]: https://bitbucket.org/jastrother/neuron_image_analysis/src
+  [3]: https://osf.io/3tsd6/
  
