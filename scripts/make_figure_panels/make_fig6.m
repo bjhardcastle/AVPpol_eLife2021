@@ -1,23 +1,84 @@
-% Generate plots for Fig6 (TuBu/R4m comparison in anterior bulb)
+% Generate plots for Fig4 (various polarotopies in TuBu drivers in AOTU)
 % Each cell can be run independently
 
 pathsAVP
-if exist(fullfile(fig6path),'dir')
-    try rmdir(fullfile(fig6path),'s'),end
+if exist(fullfile(fig4path),'dir')
+    try rmdir(fullfile(fig4path),'s'),end
 end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% PSI values in ring neuron drivers tested
-objStr = {'R19C08_Bu';'R34D03_Bu'};
+%% Various plots for TuTu, TuBu drivers in AOTU
+clear objStr
+objStr{1} = 'R49E09_AOTU'; % TuBu inf driver
+objStr{2} = 'R88A06_AOTU'; % TuBu sup + ant driver
+objStr{3} = 'R34H10_AOTU'; % TuBu ant driver
+% objStr{4} = 'R17F12_AOTU'; % TuTu driver
+% objStr{5} = 'R48B06_AOTU'; % pan-TuBu driver
+
+selectIdx = [ 1, 4, 1, 2, 1];
+
+for tIdx = 1:length(objStr)
+    
+    % load object array
+    eval(['load' objStr{tIdx}]) 
+    
+    pathsAVP
+    printpath = fig4path;
+
+    superUseMSP(x,1)
+    superPolThreshold(x,-1)
+    
+    
+    % PSI map
+    %{
+    prefix = 'polSelectivity_';
+       
+    plotPolSelImg( x(selectObj(selectIdx(tIdx))).MIP ,1,-1)
+    suffix = '_R_MIP';
+    printAVP
+    %}
+    
+    
+    % Tuning map
+    prefix = 'polTuning_';
+    
+    plotCombPolImgManual( x(selectObj(selectIdx(tIdx))).MIP ,1,[],0) 
+    suffix = '_R_MIP_mask';
+    printAVP
+    
+     plotCombPolImgManual( x(selectObj(selectIdx(tIdx))).Layers(selectLayer(selectIdx(tIdx))) ,1,[],0) 
+    suffix = '_R_Layer_mask';
+    printAVP
+ 
+    % Scatter plot
+    prefix = 'scatter_vert_';
+
+    superXY(x,0,1,[],[],1,1,0,2)
+    suffix = '_tuning';
+    printAVP
+    
+%     superXY(x,0,1,[],[],0,1,0,2)
+%     suffix = '_sel';
+%     printAVP
+    
+
+end
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Selectivity histograms and boxplots for pol vs no pol median values
+clear objStr
+objStr{1} = 'R49E09_AOTU';
+objStr{2} = 'R88A06_AOTU';
+objStr{3} = 'R34H10_AOTU';
 
 pathsAVP
-printpath = fig6path;
-savename = 'Ring';
+printpath = fig4path;
+savename = 'TuBu_AOTU';
+
 prefix = 'psi_';
 
-
-% abs values 
-b = boxplotPSI(objStr,'dist','mask');
+% abs values
+b = boxplotPSI(objStr);
 suffix = 'box';
 printAVP
 
@@ -27,120 +88,8 @@ pdfplotPSI(objStr,'add','none');
 suffix = 'pdf';
 printAVP
 
-
-%% PSI values in R4m alone, compared to controls
-pathsAVP
-printpath = fig6path;
-savename = 'R4m';
-prefix = 'psi_';
-
 % mean-of-controls-subtracted values
-b = boxplotPSI('R34D03_Bu','pol','compare');
+b = boxplotPSI(objStr,'pol','compare');
 suffix = 'diff';
-printAVP
-
-% probability density
-pdfplotPSI('R34D03_Bu','add','ctrlCell');
-% legend off
-suffix = 'pdf';
-printAVP
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Tuning map in TuBu_a in anterior bulb 
-loadR34H10_Bu
-printpath = fig6path;
-superUseMSP(x,1)
-superPolThreshold(x,-1); 
-
-useTuningCols = 1;
-useLayerMask = 1;
-
-%{
-% PSI map
-prefix = 'polSel';
-plotPolSelImg( x(selectObj(1)).MIP ,1,-1) 
-printAVP
-%}
-
-% tuning map with mask applied
-prefix = 'polTuning';
-plotCombPolImgManual( x(selectObj(1)).MIP ,useTuningCols,-1,~useLayerMask,1) 
-printAVP
-
-%{
-% tuning map without mask applied
-prefix = 'polTuning';
-plotCombPolImgManual( x(selectObj(1)).MIP ,useTuningCols,-1,0,1) 
-printAVP
-%}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Tuning map in R4m in anterior bulb 
-loadR34D03_Bu
-printpath = fig6path;
-superUseMSP(x,1)
-superPolThreshold(x,-1); 
-
-useTuningCols = 1;
-useLayerMask = 1;
-
-%{
-prefix = 'polSel';
-plotPolSelImg( x(selectObj(1)).MIP ,1,-1) 
-printAVP
-%}
-
-prefix = 'polTuning';
-plotCombPolImgManual( x(selectObj(1)).MIP ,useTuningCols,[],~useLayerMask,1) 
-printAVP
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Normalized response curves
-% make_panel_TuBu_a_R4m_ROI_tuning_curve
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Tuning map in R2 in superior bulb (Gal4 #1 - individual layer)
-loadR19C08_Bu
-printpath = fig6path;
-superUseMSP(x,1)
-superPolThreshold(x,-1); 
-
-useTuningCols = 1;
-useLayerMask = 1;
-
-%{
-% PSI map - individual layer
-prefix = 'polSel';
-plotPolSelImg( x(selectObj(1)).Layers(selectLayer(1)) ,1,-1) 
-suffix = '_R_Layer_mask';
-printAVP
-%}
-
-% PSI map - MIP
-prefix = 'polSel';
-plotPolSelImg( x(selectObj(1)).MIP ,1,-1)
-suffix = '_R_MIP_mask';
-printAVP
-   
-%{
-% tuning map with mask applied - individual layer
-prefix = 'polTuning';
-plotCombPolImgManual( x(selectObj(1)).Layers(selectLayer(1)) ,useTuningCols,-1,~useLayerMask,1) 
-suffix = '_R_Layer_mask';
-printAVP
-%}
-
-% tuning map with mask applied -MIP
-prefix = 'polTuning';
-plotCombPolImgManual( x(selectObj(1)).MIP ,useTuningCols,-1,~useLayerMask,1) 
-suffix = '_R_MIP_mask';
-printAVP
-
-%{
-% tuning map without mask applied
-prefix = 'polTuning';
-plotCombPolImgManual( x(selectObj(2)).MIP ,useTuningCols,-1,0,1) 
-printAVP
-%}
+close(gcf)
 

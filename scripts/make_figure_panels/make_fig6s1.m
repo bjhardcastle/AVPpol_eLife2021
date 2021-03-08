@@ -1,33 +1,11 @@
-% Generate plots for Fig6s5 (TuBu/R4m polarotopy scatter plots, anterior bulb)
+% Generate plots for Fig4s4 (blue flash responses in TuBu drivers in AOTU & BU)
 % Each cell can be run independently
 
 pathsAVP
-if exist(fullfile(fig6s1path),'dir')
-    try rmdir(fullfile(fig6s1path),'s'),end
+if exist(fullfile(fig4s1path),'dir')
+    try rmdir(fullfile(fig4s1path),'s'),end
 end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% TuBu_a, anterior bulb
-
-pathsAVP
-
-lineStr = 'R34H10_Bu';
-printpath = fig6s1path;
-
-savePlotStr = {'horiz_all';'vert_all';'circ_all'};
-plot_TuBu_a_R4m_EPG_ROIstruct_polarotopy 
-% script requires lineStr (for ROIstruct), savePlotStr (selection to save)
-% and printpath (for printAVP)
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% R4m, anterior bulb
-
-pathsAVP
-
-lineStr = 'R34D03_Bu';
-printpath = fig6s1path;
-
-savePlotStr = {'horiz_all';'vert_all';'circ_all'};
-plot_TuBu_a_R4m_EPG_ROIstruct_polarotopy 
-% script requires lineStr (for ROIstruct), savePlotStr (selection to save)
-% and printpath (for printAVP)
+%%
+make_panel_TuBu_flash_response

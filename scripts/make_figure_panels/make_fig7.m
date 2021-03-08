@@ -1,169 +1,175 @@
-% Generate plots for Fig7 (TuBu/R4m population resultant tunings)
+% Generate plots for Fig5 (various PSI distributions in TuBu drivers in BU)
 % Each cell can be run independently
 
 pathsAVP
-if exist(fullfile(fig7path),'dir')
-    try rmdir(fullfile(fig7path),'s'),end
+if exist(fullfile(fig5path),'dir')
+    try rmdir(fullfile(fig5path),'s'),end
 end
-% % % add left and right resultant plots and print info
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% TuBu anterior bulb
-% When we look at the representation of pol tunings in a TuBu_a population,
-% in an individual fly, we see a range of angles with a roughly uniform
-% distribution and a short resultant:
+%% Selectivity histograms and boxplots for pol vs no pol median values
+% First we looked at the average pol selectivity index in each compartment,
+% exploiting the fact that 88A06 labels TuBu neurons projecting to both the 
+% superior and anterior bulb
 
-loadR34H10_Bu
-printpath = fig7path;
+clear objStr
+objStr{1} = 'R49E09_Bu';
+objStr{2} = 'R88A06_Bu';
+objStr{3} = 'R88A06_Bu_ant';
+objStr{4} = 'R34H10_Bu';
 
-superUseMSP(x,1)
-superPolThreshold(x,-1)
+pathsAVP
+printpath = fig5path;
+savename = 'TuBu_Bu';
+prefix = 'psi_';
 
-usePSIweighting = 1;
-usePSIthreshold = 0;
-
-disp('[Left+Right recordings]')
-% % print plot (pixel-based to compare with R4m EB):
-superPolAngResultant(x,usePSIweighting, usePSIthreshold)
-suffix = 'pixel';
-prefix = 'polResultant_';
+% abs values - whole layer mask
+b = boxplotPSI(objStr,'dist','mask');
+suffix = 'box_layer';
 printAVP
 
-% % print stats (ROI-based to compare with pixel-based method):
-superPolAngResultantROI(x,usePSIweighting, usePSIthreshold)
-close(gcf)
-
-disp('[Left recordings]')
-% % print stats (pixel-based to compare with R4m EB):
-superPolAngResultant(x(inclL),usePSIweighting, usePSIthreshold)
-close(gcf)
-% % print stats (ROI-based to compare with pixel-based method):
-superPolAngResultantROI(x(inclL),usePSIweighting, usePSIthreshold)
-close(gcf)
-
-disp('[Right recordings]')
-% % print stats (pixel-based to compare with R4m EB):
-superPolAngResultant(x(inclR),usePSIweighting, usePSIthreshold)
-close(gcf)
-% % print stats (ROI-based to compare with pixel-based method):
-superPolAngResultantROI(x(inclR),usePSIweighting, usePSIthreshold)
-close(gcf)
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% R4m anterior bulb
-% When we look at the representation of pol tunings in an R4m population,
-% in an individual fly, we see a range of angles with a less uniform
-% distribution and a longer resultant:
-
-loadR34D03_Bu
-printpath = fig7path;
-
-superUseMSP(x,1)
-superPolThreshold(x,-1)
-
-usePSIweighting = 1;
-usePSIthreshold = 0;
-
-disp('[Left+Right recordings]')
-% % print plot (pixel-based to compare with R4m EB):
-superPolAngResultant(x,usePSIweighting, usePSIthreshold)
-suffix = 'pixel';
-prefix = 'polResultant_';
+% mean-of-controls-subtracted values  - whole layer mask
+b = boxplotPSI(objStr(2:4),'pol','compare');
+suffix = 'diff';
 printAVP
 
-% % print stats (ROI-based to compare with pixel-based method):
-superPolAngResultantROI(x,usePSIweighting, usePSIthreshold)
-close(gcf)
 
-disp('[Left recordings]')
-% % print stats (pixel-based to compare with R4m EB):
-superPolAngResultant(x(inclL),usePSIweighting, usePSIthreshold)
-close(gcf)
-% % print stats (ROI-based to compare with pixel-based method):
-superPolAngResultantROI(x(inclL),usePSIweighting, usePSIthreshold)
-close(gcf)
-
-disp('[Right recordings]')
-% % print stats (pixel-based to compare with R4m EB):
-superPolAngResultant(x(inclR),usePSIweighting, usePSIthreshold)
-close(gcf)
-% % print stats (ROI-based to compare with pixel-based method):
-superPolAngResultantROI(x(inclR),usePSIweighting, usePSIthreshold)
-close(gcf) 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% R4m EB
-% When we look at the representation of pol tunings in an R4m population,
-% in an individual fly, we see a range of angles with a less uniform
-% distribution and a longer resultant:
-loadR34D03_EB
-printpath = fig7path;
-
-superUseMSP(x,1)
-superPolThreshold(x,-1)
-
-usePSIweighting = 1;
-usePSIthreshold = 0;
-
-% Only a single ROI was drawn around the entire EB (which would always give
-% a resultant length of 1 in the ROI-based analysis), so we only plot the
-% pixel-based approach (and there are no L/R recordings for the EB):
-superPolAngResultant(x,usePSIweighting, usePSIthreshold)
-suffix = 'pixel';
-prefix = 'polResultant_';
+% probability density - whole layer mask
+pdfplotPSI(objStr,'add','none','dist','mask');
+suffix = 'pdf_layer';
 printAVP
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% R4m EB selectivity, tuning maps, polar histograms
-loadR34D03_EB
-printpath = fig7path;
-superUseMSP(x,1)
-superPolThreshold(x,-1)
+% abs values 
+b = boxplotPSI(objStr);
+suffix = 'box';
+printAVP
 
-usePSIweighting = 1;
-usePSIthreshold = 0;
+% mean-of-controls-subtracted values
+b = boxplotPSI(objStr(2:4),'pol','compare');
+suffix = 'diff';
+printAVP
+
+% probability density
+pdfplotPSI(objStr,'add','none');
+suffix = 'pdf';
+printAVP
+
+% probability density
+pdfplotPSI(objStr,'add','none');
+suffix = 'pdf';
+printAVP
+
+%
+for tIdx = 2:length(objStr)
+
+% mean-of-controls-subtracted values
+b = boxplotPSI(objStr{tIdx},'pol','compare');
+savename = objStr{tIdx};
+suffix = 'diff';
+printAVP
+
+% probability density
+pdfplotPSI(objStr{tIdx},'add','ctrlCell');
+% legend off
+savename = objStr{tIdx};
+suffix = 'pdf';
+printAVP
+
+end
+
+%}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Spatial maps of PSI and distribution of tunings - superior bulb
+
+% We then looked at spatial distribution of pol responses in sup bulb: 
+% Although mostly unresonsive, some glomeruli showed strong responses,
+% shown by high PSI:
+
+loadR88A06_Bu
+printpath = fig5path;
+superUseMSP(x,1)
+superPolThreshold(x,-1); 
+
+useTuningCols = 1;
 useLayerMask = 1;
 
-for sIdx = [1,3,6,7] %[1,3,6,7,11,13]% [1,3,6,7]
-    
-    suffix = num2str(sIdx);
-    
-    prefix = 'polSel';
-    plotPolSelImg( x(selectObj(sIdx)).MIP ,1,-1)
-    printAVP
-    
-  
-    prefix = 'polHist';
-    superPolAngHist(x(selectObj(sIdx)),1, usePSIthreshold);
-    printAVP 
-    
-    if sIdx == 7
-         prefix = 'avgActivity';
-         plotCombPolImgManual( x(selectObj(sIdx)).MIP ,0,0)
-         printAVP
-	else
-		prefix = 'polTuning';
-		plotCombPolImgManual(x(selectObj(sIdx)).MIP ,1,-1,~useLayerMask,1)
-		printAVP
-    end
-end
+suffix = 'R';
+prefix = 'polSel';
+plotPolSelImg( x(selectObj(3)).MIP ,1,-1) 
+printAVP
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Example average pol response from whole EB/all R4m
-loadR34D03_EB
-printpath = fig7path;
+prefix = 'polTuning';
+plotCombPolImgManual( x(selectObj(3)).MIP ,useTuningCols,[],~useLayerMask,1) 
+printAVP
+
+suffix = 'L';
+prefix = 'polSel';
+plotPolSelImg( x(selectObj(4)).MIP ,1,-1) 
+printAVP
+
+prefix = 'polTuning';
+plotCombPolImgManual( x(selectObj(4)).MIP ,useTuningCols,[],~useLayerMask,1) 
+printAVP
+
+% When we look at the range of pol angles represented in the sup bulb, we
+% find an over-representation of near-vertical angles, not uniform
+% distribution. This distribution is mirrored in the left and right sides
+% of the brain:
+
+useTuningCols = 1;
+usePSIthreshold = 1;
+
+prefix = 'polTuning';
+
+suffix = 'hist_R';
+superPolAngHist(x(inclR),useTuningCols,usePSIthreshold)
+printAVP
+
+suffix = 'hist_L';
+superPolAngHist(x(inclL),useTuningCols,usePSIthreshold)
+printAVP
+
+%% - and tuning maps for the anterior bulb, using the alternative layer
+% masks. These are from the same recordings, by will have to be stitched
+% together later. Saves making a whole new object with masks drawn around
+% sup+ant bulb just for this figure.
+loadR88A06_Bu_ant
+printpath = fig5path;
 superUseMSP(x,1)
+superPolThreshold(x,-1);
 
-for sIdx = [1,3,6]
-    if sIdx == 6
-        plotPolMapTrialManual( x(selectObj(sIdx)), 1) % single layer, no MSP backed up due to size: use manually saved ROI of layer_mask
-    else
-        plotPolMapTrialManual( x(selectObj(sIdx)), -1) % use layer mask
-    end
-    ylim([-0.5 0.5])
-    scalebarF(gca)
-    scalebarT(gca)
-    prefix = 'polMapping_';
-    suffix = ['layerMask_' num2str(sIdx)];
-    printAVP
-end
+useTuningCols = 1;
+useLayerMask = 1;
+
+suffix = 'R';
+prefix = 'polTuning';
+plotCombPolImgManual( x(selectObj(3)).MIP ,useTuningCols,[],~useLayerMask,1) 
+printAVP
+
+suffix = 'L';
+prefix = 'polTuning';
+plotCombPolImgManual( x(selectObj(4)).MIP ,useTuningCols,[],~useLayerMask,1) 
+printAVP
+
+%% distribution of tunings - anterior bulb
+% When we look at the range of pol angles represented in the ant bulb, we
+% find a roughly uniform distribution on each side of the brain:
+
+loadR34H10_Bu
+printpath = fig5path;
+superUseMSP(x,1)
+superPolThreshold(x,-1);
+
+useTuningCols = 1;
+usePSIthreshold = 1;
+
+prefix = 'polTuning';
+
+suffix = 'hist_R';
+superPolAngHist(x(inclR),useTuningCols,usePSIthreshold)
+printAVP
+
+suffix = 'hist_L';
+superPolAngHist(x(inclL),useTuningCols,usePSIthreshold)
+printAVP
