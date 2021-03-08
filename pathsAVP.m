@@ -48,6 +48,8 @@ plotpathAVP = fullfile(rootpathAVP, 'plots');
 fig1path = fullfile(plotpathAVP, 'fig1' );
 fig2path = fullfile(plotpathAVP, 'fig2' );
 fig3path = fullfile(plotpathAVP, 'fig3' );
+fig4path = fullfile(plotpathAVP, 'fig4' );
+fig5path = fullfile(plotpathAVP, 'fig5' );
 fig6path = fullfile(plotpathAVP, 'fig6' );
 fig7path = fullfile(plotpathAVP, 'fig7' );
 fig8path = fullfile(plotpathAVP, 'fig8' );
@@ -56,11 +58,12 @@ fig10path = fullfile(plotpathAVP, 'fig10' );
 
 fig1s1path = fullfile(plotpathAVP, 'fig1s1' );
 fig1s2path = fullfile(plotpathAVP, 'fig1s2' );
-figX1path = fullfile(plotpathAVP, 'figX1' );
 fig3s1path = fullfile(plotpathAVP, 'fig3s1' );
 fig6s1path = fullfile(plotpathAVP, 'fig6s1' );
 fig8s1path = fullfile(plotpathAVP, 'fig8s1' );
 fig10s1path = fullfile(plotpathAVP, 'fig10s1' );
+
+figX1path = fullfile(plotpathAVP, 'figX1' );
 
 fig_command_window_output = fullfile(plotpathAVP, 'commandWindow.log' );
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

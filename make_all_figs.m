@@ -4,7 +4,7 @@
 % will be loaded when needed - some are >1GB and can take a few seconds to
 % open.
 
-% some stats are printed in command window: keep a log file 
+% stats are printed in command window: keep a record in a log file 
 clear all 
 pathsAVP
 if ~exist(plotpathAVP,'file')

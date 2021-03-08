@@ -11,7 +11,7 @@ end
 %{
 loadR56F07_AOTU
  
-printpath = fig2path;
+printpath = fig3path;
 
 superUseMSP(x,1)
 superPolThreshold(x,-1);
@@ -52,7 +52,7 @@ disp(['[R56F07] Negative polarotopy: ' num2str(length([x(neg_set).containsPolMap
 %{
 loadR56F07_AOTU
  
-printpath = fig2path;
+printpath = fig3path;
 
 superUseMSP(x,1)
 superPolThreshold(x,-1);
@@ -75,7 +75,7 @@ disp(['[R56F07] Negative polarotopy: ' num2str(length([x(neg_set).containsPolMap
 %{
 loadR56F07_AOTU
  
-printpath = fig2path;
+printpath = fig3path;
 
 superUseMSP(x,1)
 superPolThreshold(x,-1);
@@ -89,7 +89,7 @@ printAVP
 %% 56F07 tuning map, example1: predominant positive polarotopy
 loadR56F07_AOTU
  
-printpath = fig2path;
+printpath = fig3path;
 
 superUseMSP(x,1)
 superPolThreshold(x,-1);
@@ -109,7 +109,7 @@ printAVP
 %{
 loadR56F07_AOTU
  
-printpath = fig2path;
+printpath = fig3path;
 
 superUseMSP(x,1)
 superPolThreshold(x,-1);
@@ -122,7 +122,7 @@ printAVP
 %% 56F07 PSI map, for example1 above, including layer mask
 loadR56F07_AOTU
  
-printpath = fig2path;
+printpath = fig3path;
 
 plotPolSelImg( x(selectObj(1)).MIP ,1,-1)  % with  mask applied
 prefix = 'polSelectivity_';
@@ -133,7 +133,7 @@ printAVP
 %{
 loadR56F07_AOTU
  
-printpath = fig2path;
+printpath = fig3path;
 
 plotPolSelImg( x(selectObj(3)).MIP ,1,-1)  % with  mask applied
 prefix = 'polSelectivity_';
@@ -147,7 +147,7 @@ printAVP
 %{
 loadR73C04_AOTU
  
-printpath = fig2path;
+printpath = fig3path;
 
 superUseMSP(x,1)
 superPolThreshold(x,-1);
@@ -163,7 +163,7 @@ printAVP
 
 loadR73C04_AOTU
  
-printpath = fig2path;
+printpath = fig3path;
 
 superUseMSP(x,1)
 superPolThreshold(x,-1);
@@ -190,7 +190,7 @@ disp(['[R73C04] Other polarotopy (outliers): ' num2str(length([x(other_set).cont
 %{
 loadR73C04_AOTU
  
-printpath = fig2path;
+printpath = fig3path;
 
 superUseMSP(x,1)
 superPolThreshold(x,-1);
@@ -213,7 +213,7 @@ disp(['[R73C04] Other polarotopy (outliers): ' num2str(length([x(other_set).cont
 %{
 loadR73C04_AOTU
  
-printpath = fig2path;
+printpath = fig3path;
 
 superUseMSP(x,1)
 superPolThreshold(x,-1);
@@ -227,7 +227,7 @@ printAVP
 %% 73C04 tuning map, example1: predominant positive polarotopy
 loadR73C04_AOTU
  
-printpath = fig2path;
+printpath = fig3path;
 
 superUseMSP(x,1)
 superPolThreshold(x,-1);
@@ -247,7 +247,7 @@ printAVP
 %% 73C04 PSI map, for example1 above, including layer mask
 loadR73C04_AOTU
  
-printpath = fig2path;
+printpath = fig3path;
 
 plotPolSelImg( x(selectObj(1)).MIP ,1,-1)  % with  mask applied
 prefix = 'polSelectivity_';
