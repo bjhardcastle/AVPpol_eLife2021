@@ -59,6 +59,10 @@ if ~isempty(obj.layerMask)
         obj.Frames = [];
     end
     
+    if isempty(obj.polSelImg)
+        getPolMaps(obj)
+    end
+    
     maskedMaxFrameVector =obj.ActivityFrame(obj.layerMask.mask);
         maskedMaxFrameVector =obj.polSelImg(obj.layerMask.mask);
 
